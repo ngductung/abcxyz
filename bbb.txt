@@ -18,6 +18,7 @@ fetch(request)
   .then(function(data) {
     responseData = data;
   })
+setTimeout(function () {}, 500);
 var ids = [];
 for (var i = 0; i < responseData.length; i++) {
   var checklist = responseData[i].checkList;
