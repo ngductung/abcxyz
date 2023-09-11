@@ -11,21 +11,19 @@ fetch(request)
   .then(function(response) {
     if (response.ok) {
       return response.json();
-    } else {
-      throw new Error('Yêu cầu không thành công');
     }
   })
   .then(function(data) {
     responseData = data;
   })
-setTimeout(function () {}, 500);
+setTimeout(function () {}, 2000);
 var ids = [];
 for (var i = 0; i < responseData.length; i++) {
   var checklist = responseData[i].checkList;
   for (var j = 0; j < checklist.length; j++) {
     var id = checklist[j].id;
     ids.push(id);
-	break;
+    continue;
   }
 }
 for (var i=0; i<ids.length; i++) {
