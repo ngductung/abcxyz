@@ -14,3 +14,5 @@ apt install -y hashcat
 apt install -y nmap
 curl "https://raw.githubusercontent.com/ngductung/abcxyz/main/.banner1" -o /.banner1 && echo "cat /.banner1" >> /home/ngductung/.bashrc
 curl "https://raw.githubusercontent.com/ngductung/abcxyz/main/.banner2" -o /.banner2 && echo "cat /.banner2" >> /root/.bashrc
+apt install -y dirsearch
+cp /root/go/bin/ /usr/bin/
