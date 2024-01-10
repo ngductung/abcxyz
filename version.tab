@@ -112,3 +112,4 @@ X-OWA-Version: ([\d.]+)	1	Outlook Web Access	Low	Certain
 X-Tealeaf":"device\s+\(UIC\)\s+Lib/([\d.]+)	1	IBM TeaLeaf	Information	Certain
 X-TeaLeaf-UIEventCapture-Version: ([\d.]+)	1	IBM TeaLeaf	Low	Certain
 (.*VersionInfo.*)	1	Version Version	Low	Certain
+Liferay-Portal:(.*)	1	Version	Low	Certain
