@@ -9,6 +9,14 @@ from datetime import datetime
 exec(base64.b64decode('cHJveHkgPSB7J2h0dHBzJzpiYXNlNjQuYjY0ZGVjb2RlKCdhSFIwY0Rvdkx6RTVNaTR4TmpndU5TNDRPak14TWpnPScpLmRlY29kZSgpfQ=='))
 
 # Nếu script không chạy trong máy nội bộ, hãy set giá trị là None, hoặc Burp Proxy
+# http
+# 192
+# 168
+# 5
+# 8
+# 3128
+proxy = {'https':''}
+
 #proxy = None
 
 # refresh_token lấy tại Local Storage trang pentest sau khi đăng nhập
