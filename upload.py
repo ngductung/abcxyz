@@ -2,18 +2,14 @@ import requests
 import base64
 import glob
 import json
+import jwt
+from datetime import datetime
 
 # Proxy để máy nội bộ có thể kết nối đến trang pentest
 exec(base64.b64decode('cHJveHkgPSB7J2h0dHBzJzpiYXNlNjQuYjY0ZGVjb2RlKCdhSFIwY0Rvdkx6RTVNaTR4TmpndU5TNDRPak14TWpnPScpLmRlY29kZSgpfQ=='))
 
 # Nếu script không chạy trong máy nội bộ, hãy set giá trị là None, hoặc Burp Proxy
-# http
-# 192
-# 168
-# 5
-# 8
-# 3128
-proxy = {'https':''}
+#proxy = None
 
 # refresh_token lấy tại Local Storage trang pentest sau khi đăng nhập
 refresh_token = ''
@@ -30,19 +26,29 @@ def encode_file_to_base64(input_file_path):
         encoded_bytes = base64.b64encode(input_file.read())
         return encoded_bytes.decode("utf-8")
 
-def get_token():
-    url = f'https://{domain}/api/v1/token/refresh'
-    headers = {'Content-Type': 'application/json'}
-    
-    data = json.dumps({'token':refresh_token})
+token = ''
+def check_token():
+    global token
+    if token !='':
+        decoded_token = jwt.decode(token, options={"verify_signature": False})
+        exp = decoded_token.get('exp')
+        current_datetime = datetime.timestamp(datetime.now())
+        if exp > current_datetime:
+            return
 
-    response = requests.post(url, headers=headers, data=data, proxies=proxy)
+    try:
+        url = f'https://{domain}/api/v1/token/refresh'
+        headers = {'Content-Type': 'application/json'}
+        data = json.dumps({'token':refresh_token})
+        response = requests.post(url, headers=headers, data=data, proxies=proxy, timeout=3)
+        token = response.json()['token']
+        print("check_token(): OK")
+    except:
+        exit("refresh_token() false!")
 
-    return response.json()['token']
-
-token = get_token()
 
 def uploadfile(filename):
+    check_token()
     url = f'https://{domain}/attachments'
     headers = {
         'Content-Type': 'application/json',
@@ -58,9 +64,7 @@ output = ''
 matching_files = glob.glob(f'{pattern}*')
 
 for file in matching_files:
-    x = uploadfile(file)
-    y = x['path']
-    output += f'curl "https://{domain}/{y}" -o "{file}"\n'
+    output += f'curl "https://{domain}/{uploadfile(file)["path"]}" -o "{file}"\n'
     print(f'Done {file}')
 
 open(f'output - {pattern}.bat', 'w').write(output)
