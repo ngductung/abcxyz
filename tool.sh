@@ -21,3 +21,4 @@ cp /root/go/bin/* /usr/bin/
 apt install -y git
 cd /tmp && git clone https://github.com/ngductung/nuclei-templates.git && mv nuclei-templates /home/ngductung/
 apt install python-is-python3
+apt install seclists
