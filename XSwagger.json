@@ -1,9 +1,9 @@
 {
-    "url": "https://raw.githubusercontent.com/ngductung/abcxyz/main/XSwagger.yaml",
+    "url": "https://github.com/ngductung/abcxyz/raw/main/XSwagger.yaml",
     "urls": [
         {
-        "url": "https://raw.githubusercontent.com/ngductung/abcxyz/main/XSwagger.yaml",
-        "name": "ABCXYZ"
-    }
+            "url": "https://github.com/ngductung/abcxyz/raw/main/XSwagger.yaml",
+            "name": "Foo"
+        }
     ]
 }
