@@ -23,3 +23,4 @@ cd /tmp && git clone https://github.com/ngductung/nuclei-templates.git && mv nuc
 apt install python-is-python3
 apt install seclists
 gunzip /usr/share/wordlists/rockyou.txt.gz
+curl https://raw.githubusercontent.com/ngductung/abcxyz/refs/heads/main/dirsearch_dicc.txt >> /usr/lib/python3/dist-packages/dirsearch/db/dicc.txt
