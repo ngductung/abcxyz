@@ -1,10 +1,13 @@
 import re
 
+
+excluded_extensions = ['.js', '.svg', '.css', '.png', '.jpg', '.ttf', '.ico', '.html', '.map']
+
 with open('sitemap.html','r') as file:
     content = file.read()
 
     # Regular expression pattern to match <li>...</li>
-    pattern = r'<li>http(.*?)</li>'
+    pattern = r'<li>(ht.*?)</li>'
 
     # Find all matches
     matches = re.findall(pattern, content)
@@ -12,4 +15,5 @@ with open('sitemap.html','r') as file:
     # Print the matches
     with open('output.txt','w') as x:
         for match in matches:
-            x.write(match + "\n")
+            if not any(match.endswith(ext) for ext in excluded_extensions):
+                x.write(match + "\n")
