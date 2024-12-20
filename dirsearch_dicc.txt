@@ -8,3 +8,4 @@ swagger-ui/index.html
 webconfig.txt
 trasoat
 db_live
+esb.log
