@@ -1,0 +1,14 @@
+import re
+
+with open('main.txt','r', encoding='utf-8') as file:
+    content = file.read()
+    pattern = re.compile(r'this\.http\..*?\)', re.DOTALL)
+    matches = pattern.findall(content)
+    print(len(matches))
+    input()
+    if matches:
+        for match in matches:
+            result_normalized = re.sub(r'\s+', ' ', match)
+            print(result_normalized)
+    else:
+        print("Không có đâu mà tìm")
